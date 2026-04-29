@@ -1,0 +1,12 @@
+const router = require('express').Router();
+const c = require('../controllers/userController');
+const { authenticate } = require('../middleware/auth');
+const { uploadAvatar } = require('../middleware/upload');
+router.use(authenticate);
+router.get('/profile', c.getProfile);
+router.put('/profile', uploadAvatar.single('avatar'), c.updateProfile);
+router.get('/addresses', c.getAddresses);
+router.post('/addresses', c.createAddress);
+router.put('/addresses/:id', c.updateAddress);
+router.delete('/addresses/:id', c.deleteAddress);
+module.exports = router;

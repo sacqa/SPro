@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { -webkit-tap-highlight-color: transparent; }
+html, body { font-family: 'Inter', sans-serif; background: #F5F5F5; }
+:root { --primary: #6C3FC5; --primary-dark: #4A2A8C; }
+
+.bottom-nav-safe { padding-bottom: env(safe-area-inset-bottom); }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white font-semibold rounded-btn px-4 py-2.5 active:scale-95 transition-all;
+  }
+  .btn-outline {
+    @apply border border-primary text-primary font-semibold rounded-btn px-4 py-2.5 active:scale-95 transition-all bg-white;
+  }
+  .card {
+    @apply bg-white rounded-card shadow-card;
+  }
+  .input-field {
+    @apply w-full bg-white border border-brand-border rounded-card px-4 py-3 text-sm outline-none focus:border-primary transition-colors;
+  }
+}

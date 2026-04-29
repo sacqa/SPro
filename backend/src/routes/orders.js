@@ -1,0 +1,12 @@
+const router = require('express').Router();
+const c = require('../controllers/orderController');
+const { authenticate } = require('../middleware/auth');
+const { uploadPaymentProof, uploadPrescription } = require('../middleware/upload');
+router.use(authenticate);
+router.post('/', c.createOrder);
+router.get('/', c.getOrders);
+router.get('/:id', c.getOrder);
+router.post('/:id/payment-proof', uploadPaymentProof.single('proof'), c.uploadPaymentProof);
+router.post('/:id/prescription', uploadPrescription.single('prescription'), c.uploadPrescription);
+router.post('/:id/cancel', c.cancelOrder);
+module.exports = router;
